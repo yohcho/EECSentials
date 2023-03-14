@@ -1,6 +1,9 @@
 const express = require('express')
 const router  = express.Router()
 
-const classesController = require('../controllers/classes')
+router.get('/getResponse', (req,res)=>{
+    const message = req.query.message
+    res.status(200).json({message:"Dummy response"})
+})
 
 module.exports = router

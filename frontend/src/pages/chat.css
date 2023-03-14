@@ -1,0 +1,119 @@
+.chat-root {
+    height: 100vh;
+    background-image: url('../assets/chat/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    display: flex;
+}
+
+.chat-content-left {
+    width: 40%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-content-left> h1 {
+    color: #5A8ED1;
+    font-weight: normal;
+    font-size: 60px;
+    margin: 0;
+    margin-bottom: 3%;
+}
+
+.chat-content-left> h3 {
+    color: white;
+    font-weight: normal;
+    font-size: 32px;
+    margin: 0;
+    margin-bottom: 10%;
+}
+
+.chat-content-left-homelogo {
+    position: absolute;
+    width: 7.5%;
+    top: 2.5%;
+    left: 6%;
+    cursor: pointer;
+}
+
+.chat-content-left-uofmlogo {
+    width: 40%;
+}
+
+.chat-content-right {
+    width: 60%;
+    background-color: rgba(90,142,209,0.5);
+    position: relative;
+}
+
+.chat-content-right-log {
+    height: 98%;
+    width: 98%;
+    padding: 1%;
+    overflow: scroll;
+}
+
+.chat-content-right-log::-webkit-scrollbar {
+    display: none;
+}
+
+.chat-content-right-log-indiv {
+    max-width: 80%;
+    width: fit-content;
+    background-color: #E5EBFF;
+    padding: 2% 2%;
+    margin-bottom: 1%;
+    font-size: 20px;
+}
+
+.human-message {
+    background-color: #5A8ED1;
+    margin-left: auto; 
+    margin-right: 1%;
+}
+
+.chat-content-right-input {
+    position: absolute;
+    bottom: 4%;
+    width: 95%;
+    height: 8%;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    display: flex;
+
+}
+
+.chat-content-right-input>textarea {
+    width: 100%;
+    background-color: #E5EBFF;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    padding-top: 2%;
+    padding-left: 1%;
+    padding-right: 8%;
+    padding-bottom: 2%;
+    font-family: Montserrat;
+}
+
+.chat-content-right-input>textarea::-webkit-scrollbar {
+    display: none;
+}
+
+.chat-content-right-input>img {
+    position: absolute;
+    right: 1%;
+    top: 0; 
+    bottom: 0; 
+    margin-top: auto; 
+    margin-bottom: auto;
+    height: 60%;
+    cursor: pointer;
+}

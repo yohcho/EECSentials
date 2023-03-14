@@ -1,0 +1,9 @@
+body {
+    margin: 0;
+    font-family: Montserrat;
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url(./assets/Montserrat-VariableFont_wght.ttf);
+}
