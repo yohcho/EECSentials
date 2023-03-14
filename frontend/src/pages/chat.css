@@ -71,6 +71,10 @@
     font-size: 20px;
 }
 
+.chat-content-right-log-padding {
+    height: 12%;
+}
+
 .human-message {
     background-color: #5A8ED1;
     margin-left: auto; 

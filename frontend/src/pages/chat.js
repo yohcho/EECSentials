@@ -42,11 +42,20 @@ const Chat = ()=>{
         )
     }
 
+    const handleScrolling = (ref)=>{
+        if(ref){
+            console.log(ref.scrollHeight)
+            console.log(ref.getBoundingClientRect().height)
+            ref.scrollTop = ref.scrollHeight-ref.getBoundingClientRect().height
+        }
+    }
+
     const ContentRight = ()=>{
         return(
             <div className="chat-content-right">
-                <div className="chat-content-right-log">
+                <div className="chat-content-right-log" ref={handleScrolling}>
                     {messageLogDisplay()}
+                    <div className="chat-content-right-log-padding"></div>
                 </div>                
                 <div className="chat-content-right-input">
                     <textarea 
