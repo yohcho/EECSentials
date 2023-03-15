@@ -1,4 +1,4 @@
-import { React, useRef, useState } from "react";
+import { React, useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 
 import logo from "../assets/logo.png"
@@ -11,8 +11,20 @@ import "./chat.css"
 const Chat = ()=>{
     const [messageLog, setMessageLog] = useState([{
         message: "Hi! What can I help with you today?",
-        sender: "ai"
+        sender: "ai",
+        loading: true
     }])
+
+    useEffect(()=>{
+        setTimeout(()=>{
+            setMessageLog([{
+                message: "Hi! What can I help with you today?",
+                sender: "ai",
+                loading: false
+            }])
+        },1500)
+    },[])
+
     const inputText = useRef("")
     const navigate = useNavigate()
 
@@ -22,13 +34,20 @@ const Chat = ()=>{
             message: inputText.current.value,
             sender: "human"
         }
-        setMessageLog(prevMessageLog=>[...prevMessageLog,newMessage])
+        setMessageLog(prevMessageLog=>[...prevMessageLog,newMessage,{message:"loading",loading:true,sender:"ai"}])
         inputText.current.value = ""
         const reply = {
             message:await newRequest(inputText.current.value),
             sender:"ai"
         }
-        setMessageLog(prevMessageLog=>[...prevMessageLog,reply])
+        setTimeout(()=>{
+            setMessageLog(prevMessageLog=>{
+                const newLog = [...prevMessageLog]
+                newLog.pop()
+                newLog.push(reply)
+                return newLog
+            })
+        },1500)
     }
 
     const ContentLeft = ()=>{
@@ -73,6 +92,15 @@ const Chat = ()=>{
     const messageLogDisplay = ()=>{
         return messageLog.map(el=>{
             const classname = `chat-content-right-log-indiv ${el.sender[0]==='a' ? "ai-message" : "human-message"}`
+            if(el.loading){
+                return(
+                    <div className={`${classname} loading`} key={el.message}>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                )
+            }
             return(
                 <div className={classname} key={el.message}>
                     {el.message}
