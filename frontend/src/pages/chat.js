@@ -63,8 +63,6 @@ const Chat = ()=>{
 
     const handleScrolling = (ref)=>{
         if(ref){
-            console.log(ref.scrollHeight)
-            console.log(ref.getBoundingClientRect().height)
             ref.scrollTop = ref.scrollHeight-ref.getBoundingClientRect().height
         }
     }
