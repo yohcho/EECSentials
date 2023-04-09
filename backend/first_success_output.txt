@@ -1,0 +1,59 @@
+#need to fix camelcase
+
+You: I'm interested in exploring the use of AI for software testing and debugging.
+AiML, software systems.
+['aiML', 'softwarystems']
+EECS 442  -  Computer Vision 
+
+EECS 445  -  Introduction to Machine Learning 
+
+EECS 448  -  Human-Centered ML 
+
+EECS 449  -  Conversational AI 
+
+EECS 453  -  Principles of ML 
+
+EECS 487  -  Introduction to Natural Language Processing 
+
+EECS 492  -  Introduction to Artificial Intelligence 
+
+EECS 494  -  Computer Game Design and Development 
+
+EECS 542  -  Advanced Topics in Computer Vision 
+
+EECS 543  -  Knowledge-Based Systems 
+
+EECS 545  -  Machine Learning 
+
+EECS 595  -  Natural Language Processing 
+
+List out course numbers of classes you would like to hear more about! (up to 5)
+You: 442,449
+442
+449
+[442, 449]
+
+You should take EECS 442 (Computer Vision) and EECS 449 (Conversational AI). Computer Vision is an introduction to 2D and 3D computer vision covering camera models for multiple views, shape reconstruction methods from visual cues, low-level and high-level vision problems such as object recognition and scene understanding. Conversational AI covers areas in Computer Science including natural language processing, dialogue management, response generation and other applications. Both classes have a workload of 19%, 4 credits and require prerequisites from either EECS 281, MATH 214/217/296/417/419/ROB101 for Computer Vision, or EECS 281 for Conversational AI. Would you like to hear more?
+
+You: i want to hear more about 449
+
+Sure. EECS 449 (Conversational AI) covers areas in Computer Science such as natural language processing, dialogue management, response generation and other applications. It has 4 credits and no specified workload. The prerequisites for the class are EECS 281. Would you like to hear more?
+
+You: no i would like to hear about other classes
+
+List out course numbers of classes you would like to hear more about! (up to 5)
+
+You: 543,545
+543
+545
+[543, 545]
+
+ Assistant: Sure, those classes are EECS 543 (Knowledge-Based Systems) and EECS 545 (Machine Learning). Knowledge-Based Systems focuses on techniques for developing software that utilize explicit representations of domain knowledge and Machine Learning focuses on different methods of supervised, unsupervised and sequential learning. The workload for both courses is similar with Machine Learning having a slightly higher percentage. Both courses require no prerequisites and offer 3 credits each. Would you like to hear more about these classes?
+You: ^CTraceback (most recent call last):
+  File "/Users/varaarul/eecs449/EECSentials/venv/main.py", line 212, in <module>
+    main()
+  File "/Users/varaarul/eecs449/EECSentials/venv/main.py", line 198, in main
+    user_input: str = input('You: ')
+KeyboardInterrupt
+
+(venv) varaarul@Varas-MacBook-Pro EECSentials % 

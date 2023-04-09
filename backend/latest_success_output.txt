@@ -1,0 +1,78 @@
+(venv) varaarul@Varas-MacBook-Pro EECSentials % /Users/varaarul/eecs449/EECSentials/venv/bin/python /Users/varaarul/eecs449/EECSentials/venv/m
+ain.py
+You: I'm interested in the use of edge computing to improve IoT device performance.
+['The following is a conversation with an AI assistant. The assistant is designed to help students pick electrical engineering/computer science courses. Here is a list of intents and example user prompts:\nSure thing, here are shorter examples for each of the intents:\n\naiML:\n1) "I\'m excited about machine learning and its potential applications in healthcare."\n2) "I want to learn more about neural networks and their use in natural language processing."\n3) "I\'m interested in AI\'s impact on job automation and want to explore ethical considerations."\nrobotics:\n1) "I love building robots and want to learn more about control systems."\n2) "I\'m interested in designing robots for space exploration."\n3) "I want to explore how robotics can be used in agriculture and farming."\nethics:\n1) "I\'m interested in the ethics of artificial intelligence."\n2) "I want to explore the ethical considerations of using facial recognition technology."\n3) "I\'m interested in the ethical implications of autonomous vehicles."\neconComputation:\n1) "I\'m interested in using machine learning to predict financial markets."\n2) "I want to explore the use of blockchain technology in supply chain management."\n3) "I\'m interested in using data analysis to identify inefficiencies in business processes."\ntheoryOfComputation:\n1) "I\'m fascinated by the concept of computational complexity."\n2) "I want to learn more about automata theory and its applications."\n3) "I\'m interested in exploring the limits of what computers can and cannot do."\ncomputingInfrastructure:\n1) "I\'m interested in cloud computing and its impact on business operations."\n2) "I want to learn more about distributed systems and their use in large-scale applications."\n3) "I\'m interested in exploring the latest advances in networking technology."\nsoftwareSystems:\n1) "I want to develop an operating system for embedded systems that is optimized for power efficiency."\n2) "I\'m interested in developing software solutions for improving the performance of computational science simulations."\n3) "I want to design game engines that provide better physics simulation and animation capabilities."\n4) "I\'m interested in exploring the use of AI in search engine algorithms to improve the relevance of search results."\n5) "I want to develop software solutions for industrial automation that can improve efficiency and safety."\n6) "I\'m interested in developing software as a service applications that can provide scalable and cost-effective solutions for businesses."\nsoftwareDevelopment:\n1) "I love programming and want to learn more about software development methodologies."\n2) "I\'m interested in developing mobile applications for social impact."\n3) "I want to explore how software can be used to improve education and learning."\nbioinformatics:\n1) "I\'m interested in using machine learning to analyze genomic data."\n2) "I want to learn more about computational biology and its applications."\n3) "I\'m interested in exploring the use of bioinformatics in drug discovery."\ncybersecurity:\n1) "I\'m interested in network security and want to learn more about cryptography."\n2) "I want to explore the latest techniques in malware analysis and detection."\n3) "I\'m interested in exploring the ethical implications of cyber warfare."\nwebTechnologyApplications:\n1) "I\'m interested in developing web applications using the latest front-end frameworks."\n2) "I want to explore the use of web technology in e-commerce and online marketplaces."\n3) "I\'m interested in building accessible and inclusive web applications."\ngaming:\n1) "I\'m interested in developing video games and want to learn more about game engines."\n2) "I want to explore the intersection of gaming and artificial intelligence."\n3) "I\'m excited about the potential of virtual reality and want to explore its applications in gaming."\ndataInformation:\n1) "I\'m interested in data analysis and want to learn more about data visualization."\n2) "I want to explore the use of big data in environmental sustainability."\n3) "I\'m interested in using data to improve healthcare outcomes."\nintroductory:\n1) "I\'m new to computer science and want to learn the basics of programming."\n2) "I\'m interested in exploring the different fields within computer science."\n3) "I want to gain a broad understanding of computer science concepts and principles."\nelectrical:\n1) "I\'m interested in power electronics and their applications in renewable energy systems."\n2) "I want to learn more about signal processing techniques and their use in audio and image processing."\n3) "I\'m fascinated by the principles of control systems and their applications in electrical engineering."\nsignalProcessingAndCommunications:\n1) "I\'m interested in exploring the principles of digital signal processing and their applications in communication systems."\n2) "I want to learn more about wireless communication protocols and their use in IoT devices."\n3) "I\'m interested in the latest advances in quantum communication and its potential for secure information transfer."\n\nThe assistant\'s job is to classify the user question into one or more of these categories and return as a response ONLY the names of those categories that the prompt fits into (response returned by assistant must be in ALL LOWERCASE, including the first letter. categories should be separated by commas, with no punctuation at the end. the names of the categories should be exactly as given, in camelcase with no spaces between the words themselves. for example, if something is classified in software systems, the returned category should be spelled as softwareSystems)\n\n\nHuman: hello\nAI: Hi there! How can I help you today?\nHuman: i like video games\nAI: Gaming.\nHuman: \nAI: How can I help you?\nHuman: i like playing video games and also robot stuff is cool i want to take classes that help me explore that\nAI: Gaming, robotics.\nHuman: \nAI: Is there anything else I can help you with?\nHuman: i like playing video games and also robot stuff is cool i want to take classes that help me explore that\n\nAI: Gaming, robotics.\nHuman: \nAI: Is there anything else I can help you with?\nHuman: i like playing video games and also robot stuff is cool i want to take classes that help me explore that\nAI: Gaming, robotics.\nHuman: I\'m interested in exploring the use of machine learning for music composition.\nAI: AiML, robotics.\nHuman: "I\'m interested in the use of edge computing to improve IoT device performance."\nAI: Computing infrastructure, software systems.\nHuman: I\'m fascinated by the use of gaming for education and training purposes.\nAI: Gaming, software development.\nHuman: I want to explore the use of data analysis in understanding human behavior and decision-making.\nAI: AiML, data information, software systems.\nHuman: I want to explore the use of data analysis in understanding human behavior and decision-making.\nAI: AiML, data information, software systems.\nHuman: \nAI: Is there anything else I can help you with?\nHuman: I want to explore the use of data analysis in understanding human behavior and decision-making. AiML, data information, software systems.\nAI: AiML, data information, software systems.\nHuman: no its not software systems\nAI: AiML, data information.\nHuman: "I want to explore the use of web technology in political activism and social justice movements."\nAI: Web technology applications, software development.\nHuman: "I\'m interested in the use of edge computing to improve IoT device performance."\nAI: Computing infrastructure, software systems.\nHuman: "I\'m interested in developing software solutions for improving the performance of computational science simulations."\nAI: Software systems.\nHuman: "I\'m interested in exploring the use of AI in search engine algorithms to improve the relevance of search results."\nAI: AiML, software systems.\nHuman: im interested in opertating systems and compiler construction Software systems, theory of computation.', "\nHuman: I'm interested in the use of edge computing to improve IoT device performance.", '\nAI: Computing infrastructure, software systems.']
+Computing infrastructure, software systems.
+
+['computingInfrastructure', 'softwareSystems']
+EECS 270  -  Introduction to Logic Design 
+
+EECS 367  -  Introduction to Autonomous Robotics 
+
+EECS 370  -  Introduction to Computer Organization 
+
+EECS 373  -  Introduction to Embedded System Design 
+
+EECS 388  -  Introduction to Computer Security 
+
+EECS 402  -  Computer Programming for Scientists and Engineers 
+
+EECS 440  -  System Design of a Search Engine 
+
+EECS 470  -  Computer Architecture 
+
+EECS 471  -  Applied Parallel Programming with GPUs 
+
+EECS 473  -  Advanced Embedded Systems 
+
+EECS 481  -  Software Engineering 
+
+EECS 482  -  Introduction to Operating Systems 
+
+EECS 483  -  Compiler Construction 
+
+EECS 484  -  Database Management Systems 
+
+EECS 489  -  Computer Networks 
+
+EECS 491  -  Introduction to Distributed Systems 
+
+EECS 495  -  Software Development for Accessibility 
+
+List out course numbers of classes you would like to hear more about! (up to 5)
+You: 471,482,483
+471
+482
+483
+[471, 482, 483]
+
+I recommend EECS471(Applied Parallel Programming with GPUs), EECS482 (Introduction to Operating Systems), and EECS483 (Compiler Construction). Each of these classes have a moderate amount of workload involving programming assignments, projects, and substantial programs. They are all four-credit classes, and the median grades for each class are A-, B+, and A respectively. All of them require EECS281 and EECS370 as prerequisites. Would you like to hear more about any of these classes?
+
+You: can i hear about the combined workload?
+
+The workload between the classes isn't too different. EECS471 has no specified workload, while EECS482 has a workload of 81%. Finally, EECS483 has a workload of 35%. Would you like to hear more about any of these classes specifically?
+
+You: could i take these classes together?
+
+Yes, you could take these classes together. However, the workload might be difficult to manage considering that all the classes involve writing substantial programs and programming assignments. Additionally, all three classes have the same prerequisites, so you will need to make sure that you complete those before taking these classes. Is there anything else I can help you with?
+
+You: no, i'd like to hear about other classes
+
+List out course numbers of classes you would like to hear more about! (up to 5)
+
+You: 388,370
+388
+370
+[388, 370]
+
+Assistant: You should take EECS 370 (Introduction to Computer Organization) and EECS 388 (Introduction to Computer Security). EECS 370 covers basic concepts of computer organization and hardware while EECS 388 introduces the principles and practices of computer security as applied to software, host systems, and networks. The workload for both of these classes is relatively light, with EECS 370 requiring 30% and EECS 388 needing 25%. Both classes have prerequisites, so make sure you complete those before enrolling. Do you want to hear more about these classes?
+
+You: what would i be likely to get in the class? and do the topics covered in each class overlap>
+
+Assistant: The median grade for EECS 370 is a B+ and the median grade for EECS 388 is an A-. As for overlap, there may be some overlap between the topics covered in each class, but they have different focuses. For example, EECS 370 covers basic concepts of hardware while EECS 388 focuses on principles and practices of computer security. Would you like specifics about the topics covered in each class?
+
+You: no, i'm good. thank you
+
+List out course numbers of classes you would like to hear more about! (up to 5)
+
+You: 
