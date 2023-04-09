@@ -1,5 +1,6 @@
 import openai
 import stringcase
+import pymongo
 
 
 with open('hidden.txt') as file: 
@@ -80,6 +81,7 @@ def second_get_api_response(prompt: str) -> str | None:
 
 def second_create_prompt(message: str, pl: list[str]) -> str:
     p_message: str = f'\nHuman: {message}'
+    #watch out for if the below prints extra shit
     update_list(p_message, pl)
     prompt: str = ''.join(pl)
     return prompt
@@ -104,16 +106,26 @@ def main():
     while True: 
         user_input: str = input('You: ') 
         first_response: str = first_get_bot_response(user_input, first_prompt_list)
+
+        print(first_prompt_list)
+        print(first_response)
         
         first_response = first_response.split('.')
         first_response = ''.join(first_response)
 
-        lowcase_arr: list[str] = first_response.split(", ")
+        first_response.replace(" ", "")
+
+        lowcase_arr: list[str] = first_response.split(",")
 
         x: int = 0
         for y in lowcase_arr:
+            print(y + "\n")
             res = lowcase_arr[x][0].lower() + lowcase_arr[x][1:]
             lowcase_arr[x] = str(res)
+            print(y + "\n")
+            lowcase_arr[x] = lowcase_arr[x].strip()
+            print(y + "\n")
+            lowcase_arr[x] = lowcase_arr[x].replace(" ", "_")
             lowcase_arr[x] = stringcase.camelcase(lowcase_arr[x])
             x = x + 1
 
@@ -132,8 +144,70 @@ def main():
         #               - if user wants to hear about other classes, we will have openai API return a "move on" response,
         #                 and then we will come out of the openai dialgue and return to step 2, and repeat
         
-        second_prompt_list: list[str] = [""]
         
+        #STEP 1 - list output of all eecs according to labels
+
+        myclient = pymongo.MongoClient("mongodb+srv://yohcho:qw123edc@cluster0.ggonojo.mongodb.net/?retryWrites=true&w=majority")
+        db = myclient["EECSentials"]["Class"]
+
+        query = {"labels":{"$in":lowcase_arr}}
+        example = db.find(query)
+
+        for result in example:
+            result["tag"] = int(result["tag"])
+            converted = str(int(result["tag"]))
+            result["tag"] = converted
+            print(("EECS " + converted), " - ", result["name"], ("\n"))
+
+
+        repeat: str = "f"
+        while repeat == "f": 
+
+            print("List out course numbers of classes you would like to hear more about! (up to 5)")
+        
+            user_input: str = input('You: ') 
+
+            user_input.replace(" ", "")
+
+            classes: list[str] = user_input.split(",")
+
+
+           
+            int_classes: list[int] = []
+            for numeric_string in classes:
+                print(numeric_string)
+                if (numeric_string != ''):
+                    int_classes.append(int(float(numeric_string)))
+            print(int_classes)
+
+            query = {"tag":{"$in":int_classes}}
+            example: str = list(db.find(query))
+
+            yeah: str = ""
+            print("about to print from query")
+            for result in example: 
+                yeah = yeah + str(result)
+                print(yeah)
+
+            #tiki = example.toString()
+
+            repeat = "t"
+            second_prompt_list: list[str] = ["The following is a conversation with an AI assistant that is supposed to help electrical engineering and computer science students select their courses. There will be some information after this that includes information on electrical engineering and computer science courses that are relevant to the student’s interests. This information is extracted from a database, and this is what is in each object: \ntag: class numer (string)\nname: class names (string)\nworkload: how much work it will be, as a percentage (number)\nprereqs: (array of arrays of tags/class names)\ndescription: (string)\nmedianGrade: (string)\nlabels: (array of strings)\ncredits: (number)\\n}\n\nso remember that those are what each thing means for each database object.\n\nThe human/user will not be the first one to chat. It will be you. So based on all the class database objects that will be listed below, you will provide a short and simple recommendation to the user that those are classes they can take. Give the course in the format(EECS [tag]) , then put name of the courses in parentheses next to that first format, and a brief one sentence description of each based on the description string in the object. \n\nsummarize how the workloads of each of the classes compare to each other. Then only after you give them this initial information do you prompt them for more questions. Ask the user if they would like to hear more specific information. If they ask you about any of the information  in the object, such as the number of credits, median grade, if they have to complete prereqs, look from the database objects about the class they ask about and tell them that information in an informative but casual way. If they want the entire course description, give the description exactly as it is in the database object. \n\nprereqs mean the perquisites for the course, so the courses you must take before taking the course. if they ask about prereqs for a specific course name/number, be sure to look under the prereqs array for that specific corresponding database object and tell them what is in that array.\n\nlabels refer to the categories that the classes are in. so include this in your response for context. After your first response, ask if they would like to hear more about the classes you listed, or if they want to hear about other classes you haven't listed. If they want to hear about classes that are not under the 'DATABASE OBJECTS' header which will be below, then you should return \"move on\"(all lowercase). you should say 'move on' even if they indicate that they want to hear about other classes. YOU MUST MOVE ON WITHOUT FAIL IF THEY WANT OTHER CLASSES!! MAKE SURE YOU DO THIS! PRINT 'move on' ONLY THOSE WORDS IN ALL LOWERCASE. \nif they ask about classes that are listed below the header, then you should answer based on all the information from the object and the conversation so far.\n\nDATABASE OBJECTS: \n\n"]
+            second_prompt_list.append(yeah)
+            print(second_prompt_list)
+
+            while True: 
+                
+                second_response: str = second_get_bot_response(user_input, second_prompt_list)
+
+                if second_response == "Sure! Move on" or second_response == "there was an error lol..." or second_response == "Move on.":
+                    repeat = "f"
+                    break
+                print(second_response)
+                user_input: str = input('You: ')
+            
+
+            second_prompt_list = second_prompt_list.remove(yeah)
 
         #if user_input == 'yes':
             
