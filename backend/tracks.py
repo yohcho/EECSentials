@@ -107,8 +107,6 @@ def main():
         user_input: str = input('You: ') 
         first_response: str = first_get_bot_response(user_input, first_prompt_list)
 
-        print(first_prompt_list)
-        print(first_response)
         
         first_response = first_response.split('.')
         first_response = ''.join(first_response)
@@ -129,23 +127,6 @@ def main():
             lowcase_arr[x] = stringcase.camelcase(lowcase_arr[x])
             x = x + 1
 
-        print(lowcase_arr)
-
-        # for final response
-
-        # PLAN:  
-        #          1)first output a list of ALL the EECS classes returned by the query(based on label(s)) 
-        #            and the class names (hardcoding).
-        #          2)prompt user for which class numbers they would like to hear more about(this will be max 5)
-        #          3)query those classes from DB
-        #          4)send the DB objects of ONLY those classes to openai API
-        #          5)have bot ask what they would like to know more about
-        #          6)user continues conversation with ai and asks whatever questions it wants
-        #               - if user wants to hear about other classes, we will have openai API return a "move on" response,
-        #                 and then we will come out of the openai dialgue and return to step 2, and repeat
-        
-        
-        #STEP 1 - list output of all eecs according to labels
 
         myclient = pymongo.MongoClient("mongodb+srv://yohcho:qw123edc@cluster0.ggonojo.mongodb.net/?retryWrites=true&w=majority")
         db = myclient["EECSentials"]["Class"]
@@ -178,7 +159,6 @@ def main():
                 print(numeric_string)
                 if (numeric_string != ''):
                     int_classes.append(int(float(numeric_string)))
-            print(int_classes)
 
             query = {"tag":{"$in":int_classes}}
             example: str = list(db.find(query))
@@ -192,15 +172,15 @@ def main():
             #tiki = example.toString()
 
             repeat = "t"
-            second_prompt_list: list[str] = ["The following is a conversation with an AI assistant that is supposed to help electrical engineering and computer science students select their courses. There will be some information after this that includes information on electrical engineering and computer science courses that are relevant to the student’s interests. This information is extracted from a database, and this is what is in each object: \ntag: class numer (string)\nname: class names (string)\nworkload: how much work it will be, as a percentage (number)\nprereqs: (array of arrays of tags/class names)\ndescription: (string)\nmedianGrade: (string)\nlabels: (array of strings)\ncredits: (number)\\n}\n\nso remember that those are what each thing means for each database object.\n\nThe human/user will not be the first one to chat. It will be you. So based on all the class database objects that will be listed below, you will provide a short and simple recommendation to the user that those are classes they can take. Give the course in the format(EECS [tag]) , then put name of the courses in parentheses next to that first format, and a brief one sentence description of each based on the description string in the object. \n\nsummarize how the workloads of each of the classes compare to each other. Then only after you give them this initial information do you prompt them for more questions. Ask the user if they would like to hear more specific information. If they ask you about any of the information  in the object, such as the number of credits, median grade, if they have to complete prereqs, look from the database objects about the class they ask about and tell them that information in an informative but casual way. If they want the entire course description, give the description exactly as it is in the database object. \n\nprereqs mean the perquisites for the course, so the courses you must take before taking the course. if they ask about prereqs for a specific course name/number, be sure to look under the prereqs array for that specific corresponding database object and tell them what is in that array.\n\nlabels refer to the categories that the classes are in. so include this in your response for context. After your first response, ask if they would like to hear more about the classes you listed, or if they want to hear about other classes you haven't listed. If they want to hear about classes that are not under the 'DATABASE OBJECTS' header which will be below, then you should return \"move on\"(all lowercase). you should say 'move on' even if they indicate that they want to hear about other classes. YOU MUST MOVE ON WITHOUT FAIL IF THEY WANT OTHER CLASSES!! MAKE SURE YOU DO THIS! PRINT 'move on' ONLY THOSE WORDS IN ALL LOWERCASE. \nif they ask about classes that are listed below the header, then you should answer based on all the information from the object and the conversation so far.\n\nDATABASE OBJECTS: \n\n"]
+            second_prompt_list: list[str] = ["The following is a conversation with an AI assistant that is supposed to help electrical engineering and computer science students select their courses. There will be some information after this that includes information on electrical engineering and computer science courses that are relevant to the student’s interests. This information is extracted from a database, and this is what is in each object: \ntag: class numer (string)\nname: class names (string)\nworkload: how much work it will be, as a percentage (number)\nprereqs: (array of arrays of tags/class names)\ndescription: (string)\nmedianGrade: (string)\nlabels: (array of strings)\ncredits: (number)\\n}\n\nso remember that those are what each thing means for each database object.\n\nThe human/user will not be the first one to chat. It will be you. So based on all the class database objects that will be listed below, you will provide a short and simple recommendation to the user that those are classes they can take. Give the course in the format(EECS [tag]) , then put name of the courses in parentheses next to that first format, and a brief one sentence description of each based on the description string in the object. \n\nsummarize how the workloads of each of the classes compare to each other. Then only after you give them this initial information do you prompt them for more questions. Ask the user if they would like to hear more specific information. If they ask you about any of the information  in the object, such as the number of credits, median grade, if they have to complete prereqs, look from the database objects about the class they ask about and tell them that information in an informative but casual way. If they want the entire course description, give the description exactly as it is in the database object. \n\nprereqs mean the perquisites for the course, so the courses you must take before taking the course. if they ask about prereqs for a specific course name/number, be sure to look under the prereqs array for that specific corresponding database object and tell them what is in that array.\n\nlabels refer to the categories that the classes are in. so include this in your response for context. After your first response, ask if they would like to hear more about the classes you listed, or if they want to hear about other classes you haven't listed. If they want to hear about class numbers that don't match any of the tags of what is under the 'DATABASE OBJECTS' header which will be below, then you should return \"move on\"(all lowercase). you should say 'move on' even if they indicate that they want to hear about other classes. YOU MUST MOVE ON WITHOUT FAIL IF THEY WANT OTHER CLASSES!! MAKE SURE YOU DO THIS! PRINT 'move on' ONLY THOSE WORDS IN ALL LOWERCASE. \nif they ask about classes that are listed below the header, then you should answer based on all the information from the object and the conversation so far.\n\nDATABASE OBJECTS: \n\n"]
             second_prompt_list.append(yeah)
-            print(second_prompt_list)
 
             while True: 
                 
                 second_response: str = second_get_bot_response(user_input, second_prompt_list)
+                response_arr: list[str] = second_response.split(" ")
 
-                if second_response == "Sure! Move on" or second_response == "there was an error lol..." or second_response == "Move on.":
+                if second_response == "Sure! Move on" or second_response == "there was an error lol..." or second_response == "Move on." or len(response_arr) < 10:
                     repeat = "f"
                     break
                 print(second_response)
