@@ -9,6 +9,7 @@ import newRequest from "../apiCall"
 import "./chat.css"
 
 const Chat = ()=>{
+    const [awaiting, setAwaiting] = useState(false)
     const [messageLog, setMessageLog] = useState([{
         message: "Hi! What can I help with you today?",
         sender: "ai",
@@ -29,25 +30,16 @@ const Chat = ()=>{
     const navigate = useNavigate()
 
     const handleSubmit = async ()=>{
+        if(awaiting) return
         if(inputText.current.value==="") return
         const newMessage = {
             message: inputText.current.value,
             sender: "human"
         }
+        setAwaiting(true)
+        inputText.current.value=""
         setMessageLog(prevMessageLog=>[...prevMessageLog,newMessage,{message:"loading",loading:true,sender:"ai"}])
-        inputText.current.value = ""
-        const reply = {
-            message:await newRequest(inputText.current.value),
-            sender:"ai"
-        }
-        setTimeout(()=>{
-            setMessageLog(prevMessageLog=>{
-                const newLog = [...prevMessageLog]
-                newLog.pop()
-                newLog.push(reply)
-                return newLog
-            })
-        },1500)
+        await newRequest(newMessage.message,setMessageLog,setAwaiting)
     }
 
     const ContentLeft = ()=>{
@@ -100,7 +92,7 @@ const Chat = ()=>{
                 )
             }
             return(
-                <div className={classname} key={el.message}>
+                <div className={classname} key={`${el.message}-${el.sender}`}>
                     {el.message}
                 </div>
             )

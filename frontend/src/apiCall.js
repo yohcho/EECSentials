@@ -1,15 +1,25 @@
 import axios from "axios"
 
-const newRequest= async(message)=>{
+const newRequest= async(message,updateLog,updateWaiting)=>{
     const config = {
         method: 'get',
-        url: 'http://localhost:5000/api/getResponse',
+        url: 'https://wpr4bkssk4td4csrd5yxm667iq0pcbmj.lambda-url.us-east-2.on.aws/',
         params: {
             message:message
         }
     }
     const response = await axios(config)
-    return response.data.message
+    updateLog(prevLog=>{
+        const newLog = [...prevLog]
+        newLog.pop()
+        newLog.push({
+            message: response.data,
+            sender: "ai",
+            loading: false
+        })
+        return newLog
+    })
+    updateWaiting(false)
 }
 
 export default newRequest
