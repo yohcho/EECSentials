@@ -13,6 +13,7 @@ Track:
 8) \"What are the most popular EECS classes for bioinformatics?\"
 9) \"What are the most popular python classes?\"
 10) \"I want to take a class with SQL in it next semester.\"
+11) \"I am interested in hacking.\"
 
 Too General:
 1) \"What classes should I take?\"
@@ -44,7 +45,7 @@ with open('hidden.txt') as file:
 
 tests = [
     "I want to major in computer science",
-    "I want to work for tesla",
+    "I am interested in hacking",
     "I want to work in artificial intelligence",
     "I am interested in bioinformatics classes",
     "what is an easy class i can take"
@@ -64,4 +65,3 @@ for test in tests:
         presence_penalty=0.6,
         stop=[" Human:", " AI:"]
     )
-    print (res)
