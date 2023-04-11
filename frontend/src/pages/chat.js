@@ -11,15 +11,15 @@ import "./chat.css"
 const Chat = ()=>{
     const [awaiting, setAwaiting] = useState(false)
     const [messageLog, setMessageLog] = useState([{
-        message: "Hi! What can I help with you today?",
+        message: "Hi! What can I help you with today?",
         sender: "ai",
         loading: true
     }])
-
+    console.log(messageLog)
     useEffect(()=>{
         setTimeout(()=>{
             setMessageLog([{
-                message: "Hi! What can I help with you today?",
+                message: "Hi! What can I help you with today?",
                 sender: "ai",
                 loading: false
             }])
@@ -32,6 +32,7 @@ const Chat = ()=>{
     const handleSubmit = async ()=>{
         if(awaiting) return
         if(inputText.current.value==="") return
+        const sessionID = messageLog[messageLog.length-1].sessionID
         const newMessage = {
             message: inputText.current.value,
             sender: "human"
@@ -39,7 +40,7 @@ const Chat = ()=>{
         setAwaiting(true)
         inputText.current.value=""
         setMessageLog(prevMessageLog=>[...prevMessageLog,newMessage,{message:"loading",loading:true,sender:"ai"}])
-        await newRequest(newMessage.message,setMessageLog,setAwaiting)
+        await newRequest(newMessage.message,setMessageLog,setAwaiting,sessionID)
     }
 
     const ContentLeft = ()=>{
@@ -47,7 +48,7 @@ const Chat = ()=>{
             <div className="chat-content-left">
                 <img className="chat-content-left-homelogo" alt="home logo" src={homelogo} onClick={()=>navigate("/")}/>
                 <h1>EECSentials</h1>
-                <h3>by EECS, for EECS</h3>
+                <h3>for EECS, by EECS</h3>
                 <img className="chat-content-left-uofmlogo" alt="uofmlogo" src={logo}/>
             </div>
         )
@@ -89,6 +90,17 @@ const Chat = ()=>{
                         <div></div>
                         <div></div>
                     </div>
+                )
+            }
+            if(el.message.classInfo){
+                return (
+                    <div className={classname} key={`${new Date().getTime()}-${el.sender}`}>{
+                        el.message.classes.map(classData=>{
+                            return(
+                                <p key={classData}>{classData}</p>
+                            )
+                        })
+                    }</div>
                 )
             }
             return(

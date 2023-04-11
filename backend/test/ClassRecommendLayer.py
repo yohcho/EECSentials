@@ -30,7 +30,7 @@ themselves. for example, if something is classified in Too General, the returned
 tooGeneral).
 
 Human: I am interested in cybersecurity related classes.
-AI: track.
+AI: track
 Human: I need help figuring out a class to take next semester.
 AI: tooGeneral
 Human: I'm interested in exploring the use of machine learning for different industries.

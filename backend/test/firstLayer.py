@@ -9,21 +9,29 @@ Class recommendation:
 4) \"I want to learn more about computational biology and its applications.\"
 5) \"I'm interested in developing software as a service application that can provide scalable and cost-effective solutions for businesses.\"
 6) \"What class teaches about cyber security and its applications?\"
-7) \”What different topics could I explore?\"
+7) \"Recommend me a class\"
+8) \"What class should I take next semester?\"
+9) \"What's an easy, fun class to take?\"
 
 Class information:
 1) \"Tell me about EECS485.\"
 2) \"I am interested in EECS 281.\"
 3) \"Tell me about the class Web Systems.\"
-4) \”What classes do I need to take before EECS485?\”
-5) \”What classes are related to 489?\”
+4) \"What classes do I need to take before EECS485?\"
+5) \"What are the prerequisities for EECS485?\"
+6) \"What classes are similar to 489?\"
+7) \"What classes are related to 489?\"
 
 Major Requirements and Declaration:
 1) \"What classes do I need to take to graduate?\"
 2) \"What are the graduation requirements?\"
 3) \"What classes do I need to take before declaring the Computer Science major?\"
-4) \”I want to get a Computer Science minor?\”
-5) \”I want to declare in computer science.\”
+4) \"I want to get a Computer Science minor.\"
+5) \"I want to declare in computer science.\"
+
+General Information
+1) \"What different topics could I explore?\"
+2) \"What can you help me with?\"
 
 The assistant's job is to classify the user question into one of these categories or none of the above and return as a response ONLY the name of the categories that the prompt fits into (response returned by assistant must be in ALL LOWERCASE, including the first letter. The names of the categories should be exactly as given, in camelcase with no spaces between the words themselves. for example, if something is classified in Major Requirements and Declaration, the returned category should be spelled as majorRequirementsAndDeclaration). Use “none of the above” very sparingly and try your best to put the user question into one of the categories.
 
@@ -31,11 +39,12 @@ Human: I want to declare for computer science
 AI: majorRequirementsAndDeclaration.
 Human: I want to find some interesting classes
 AI: classRecommendation
-Human: I want to learn more about Web Systems
+Human: I want to learn more about the class Web Systems
 AI: classInformation
 Human: Tell me about EECS376
 AI: classInformation
-
+Human: What are the prerequisites for EECS489
+AI: classInformation
 Human: i like playing video games and also robot stuff is cool i want to take classes that help me explore that
 AI: classRecommendation
 Human: I'm interested in exploring the use of machine learning for music composition.

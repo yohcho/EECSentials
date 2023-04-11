@@ -46,7 +46,7 @@ You: 471,482,483
 483
 [471, 482, 483]
 
-I recommend EECS471(Applied Parallel Programming with GPUs), EECS482 (Introduction to Operating Systems), and EECS483 (Compiler Construction). Each of these classes have a moderate amount of workload involving programming assignments, projects, and substantial programs. They are all four-credit classes, and the median grades for each class are A-, B+, and A respectively. All of them require EECS281 and EECS370 as prerequisites. Would you like to hear more about any of these classes?
+I recommend EECS471(Applied Parallel Programming with GPUs), EECS482 (Introduction to Operating Systems), and EECS483 (0Compiler Construction). Each of these classes have a moderate amount of workload involving programming assignments, projects, and substantial programs. They are all four-credit classes, and the median grades for each class are A-, B+, and A respectively. All of them require EECS281 and EECS370 as prerequisites. Would you like to hear more about any of these classes?
 
 You: can i hear about the combined workload?
 
